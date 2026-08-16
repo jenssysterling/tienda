@@ -1,0 +1,14 @@
+/
+├── index.html               # Página de inicio con presentación de la tienda
+├── productos.html           # Catálogo de productos con buscador y filtros
+├── pedido.html              # Carrito de compras y formulario de datos
+├── css/
+│   └── styles.css          # Estilos personalizados + variables CSS
+├── js/
+│   ├── app.js              # Controlador principal (nav, carrito, localStorage)
+│   ├── productos.js        # Lógica del catálogo (filtros, búsqueda, tarjetas)
+│   └── pedido.js           # Lógica del carrito (totales, WhatsApp, validación)
+├── data/
+│   └── productos.json      # Productos de ejemplo (15 items)
+└── assets/
+    └── img/                # Carpeta para imágenes (vacía, lista para agregar)

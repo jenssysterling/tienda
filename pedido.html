@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Pedido - Nardia</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ======== NAVBAR ======== -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon">🏪</span>
+                <span class="brand-name">Nardia</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="productos.html">
+                            <i class="fas fa-box"></i> Productos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active position-relative" href="pedido.html">
+                            <i class="fas fa-shopping-cart"></i> Mi pedido
+                            <span id="cartCounter" class="badge bg-danger cart-badge">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-whatsapp-nav" href="#" id="whatsappNavLink">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======== PÁGINA DE PEDIDO ======== -->
+    <main>
+        <section class="pedido-section">
+            <div class="container">
+                <!-- Título -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h1 class="page-title">
+                            <i class="fas fa-shopping-cart"></i> Mi Pedido
+                        </h1>
+                        <p class="page-subtitle">
+                            Revisa tu selección y confirma tus datos
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- ======== COLUMNA IZQUIERDA: LISTA DE PRODUCTOS ======== -->
+                    <div class="col-lg-8">
+                        <div class="pedido-card">
+                            <div class="pedido-card-header">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-list"></i> Productos seleccionados
+                                </h5>
+                                <button id="clearCartBtn" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i> Vaciar pedido
+                                </button>
+                            </div>
+                            
+                            <div id="cartItemsContainer" class="pedido-items">
+                                <!-- Los productos del carrito se cargarán aquí -->
+                                <div class="empty-cart-message text-center py-5">
+                                    <i class="fas fa-shopping-basket fa-4x text-muted mb-3"></i>
+                                    <h4>Tu pedido está vacío</h4>
+                                    <p class="text-muted">Aún no has agregado productos a tu pedido.</p>
+                                    <a href="productos.html" class="btn btn-primary btn-lg mt-3">
+                                        <i class="fas fa-store"></i> Ver productos
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ======== COLUMNA DERECHA: RESUMEN Y DATOS ======== -->
+                    <div class="col-lg-4">
+                        <!-- Resumen del pedido -->
+                        <div class="pedido-card summary-card sticky-top" style="top: 100px;">
+                            <div class="pedido-card-header">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-receipt"></i> Resumen
+                                </h5>
+                            </div>
+                            
+                            <div class="summary-content">
+                                <!-- Subtotal -->
+                                <div class="summary-row">
+                                    <span>Productos:</span>
+                                    <span id="totalItems">0</span>
+                                </div>
+                                
+                                <!-- Total -->
+                                <div class="summary-total">
+                                    <span><strong>Total:</strong></span>
+                                    <span id="totalPrice"><strong>S/ 0.00</strong></span>
+                                </div>
+
+                                <!-- Tiempo de recojo -->
+                                <div class="pickup-info">
+                                    <i class="fas fa-clock text-warning"></i>
+                                    <span>
+                                        <strong>Tiempo de recojo:</strong> 
+                                        <span id="pickupTime">30 - 60 minutos</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Formulario de datos del cliente -->
+                            <div class="customer-form">
+                                <h6 class="form-title">
+                                    <i class="fas fa-user"></i> Tus datos
+                                </h6>
+                                
+                                <div class="mb-3">
+                                    <label for="customerName" class="form-label">
+                                        <i class="fas fa-user"></i> Nombre completo *
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control form-control-lg" 
+                                           id="customerName" 
+                                           placeholder="Ej: María González"
+                                           required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingresa tu nombre
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="customerPhone" class="form-label">
+                                        <i class="fas fa-phone"></i> Celular *
+                                    </label>
+                                    <input type="tel" 
+                                           class="form-control form-control-lg" 
+                                           id="customerPhone" 
+                                           placeholder="Ej: 999999999"
+                                           required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingresa tu número de celular
+                                    </div>
+                                    <small class="text-muted">
+                                        <i class="fas fa-info-circle"></i> 
+                                        Solo números, sin espacios ni guiones
+                                    </small>
+                                </div>
+
+                                <!-- Botones de acción -->
+                                <div class="d-grid gap-3">
+                                    <button id="sendWhatsAppBtn" class="btn btn-success btn-lg">
+                                        <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
+                                    </button>
+                                    
+                                    <a href="productos.html" class="btn btn-outline-primary btn-lg">
+                                        <i class="fas fa-plus"></i> Seguir comprando
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>🏪 Nardia</h5>
+                    <p class="footer-text">
+                        Tu tienda de abarrotes de confianza. 
+                        <br>¡Siempre cerca de ti!
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="footer-contact">
+                        <a href="#" class="footer-whatsapp" id="whatsappFooterLink">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <p class="footer-hours">
+                            <i class="far fa-clock"></i> Lunes a Sábado: 8am - 8pm
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col text-center">
+                    <p class="footer-copy">
+                        &copy; 2026 Nardia - Todos los derechos reservados
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======== SCRIPTS ======== -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- App principal -->
+    <script src="js/app.js"></script>
+    
+    <!-- Lógica del pedido -->
+    <script src="js/pedido.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nardia - Tu tienda de barrio</title>
+    
+    <!-- Bootstrap 5 (solo para grid y componentes básicos) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome (iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ======== NAVBAR ======== -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <!-- Logo y nombre -->
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon">🏪</span>
+                <span class="brand-name">Nardia</span>
+            </a>
+            
+            <!-- Botón hamburguesa para móvil -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Menú de navegación -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="productos.html">
+                            <i class="fas fa-box"></i> Productos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="pedido.html">
+                            <i class="fas fa-shopping-cart"></i> Mi pedido
+                            <span id="cartCounter" class="badge bg-danger cart-badge">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-whatsapp-nav" href="#" id="whatsappNavLink">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======== PÁGINA DE INICIO ======== -->
+    <main>
+        <!-- Sección Hero -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="row align-items-center min-vh-75">
+                    <div class="col-lg-6 hero-text">
+                        <div class="hero-badge">
+                            <span class="badge bg-success-subtle text-success">Tienda de barrio</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Bienvenido a <span class="highlight">Nardia</span>
+                        </h1>
+                        <p class="hero-description">
+                            Consulta nuestro catálogo, arma tu pedido y recógelo en tienda. 
+                            <br>¡Fácil, rápido y sin complicaciones!
+                        </p>
+                        
+                        <div class="hero-buttons">
+                            <a href="productos.html" class="btn btn-primary btn-lg btn-hero">
+                                <i class="fas fa-store"></i> Ver productos
+                            </a>
+                            <a href="#" class="btn btn-success btn-lg btn-hero-whatsapp" id="whatsappHeroBtn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                        
+                        <div class="hero-info">
+                            <span><i class="fas fa-check-circle text-success"></i> Sin registro</span>
+                            <span><i class="fas fa-check-circle text-success"></i> Recoge en tienda</span>
+                            <span><i class="fas fa-check-circle text-success"></i> Paga al recoger</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 hero-image">
+                        <div class="hero-image-container">
+                            <!-- Imagen decorativa de tienda de abarrotes -->
+                            <img src="assets/img/tienda-placeholder.svg" 
+                                 alt="Tienda de abarrotes Nardia" 
+                                 class="img-fluid hero-img"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22500%22 height=%22500%22%3E%3Crect width=%22500%22 height=%22500%22 fill=%22%23f8f3e9%22/%3E%3Ctext x=%22250%22 y=%22250%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%23654321%22 font-family=%22sans-serif%22%3E🏪 Tienda Nardia%3C/text%3E%3C/svg%3E'">
+                            
+                            <!-- Elementos decorativos -->
+                            <div class="floating-icon icon-1">🥫</div>
+                            <div class="floating-icon icon-2">🧃</div>
+                            <div class="floating-icon icon-3">🍞</div>
+                            <div class="floating-icon icon-4">🧴</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de características -->
+        <section class="features-section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-6 col-md-3">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon">📱</div>
+                            <h3>Fácil de usar</h3>
+                            <p>Diseñado para todos</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon">🛒</div>
+                            <h3>Arma tu pedido</h3>
+                            <p>Selecciona cantidades</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon">📲</div>
+                            <h3>WhatsApp</h3>
+                            <p>Envía tu pedido</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon">🏪</div>
+                            <h3>Recoge en tienda</h3>
+                            <p>Sin delivery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de llamada a la acción -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <h2>¿Listo para hacer tu pedido?</h2>
+                            <p>Explora nuestro catálogo y arma tu compra en pocos pasos.</p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <a href="productos.html" class="btn btn-light btn-lg">
+                                <i class="fas fa-arrow-right"></i> Comenzar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>🏪 Nardia</h5>
+                    <p class="footer-text">
+                        Tu tienda de abarrotes de confianza. 
+                        <br>¡Siempre cerca de ti!
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="footer-contact">
+                        <a href="#" class="footer-whatsapp" id="whatsappFooterLink">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <p class="footer-hours">
+                            <i class="far fa-clock"></i> Lunes a Sábado: 8am - 8pm
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col text-center">
+                    <p class="footer-copy">
+                        &copy; 2026 Nardia - Todos los derechos reservados
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======== SCRIPTS ======== -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- App principal (controlador central) -->
+    <script src="js/app.js"></script>
+</body>
+</html>

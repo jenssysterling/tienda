@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Nardia</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ======== NAVBAR ======== -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon">🏪</span>
+                <span class="brand-name">Nardia</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="productos.html">
+                            <i class="fas fa-box"></i> Productos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="pedido.html">
+                            <i class="fas fa-shopping-cart"></i> Mi pedido
+                            <span id="cartCounter" class="badge bg-danger cart-badge">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-whatsapp-nav" href="#" id="whatsappNavLink">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======== PÁGINA DE PRODUCTOS ======== -->
+    <main>
+        <section class="products-section">
+            <div class="container">
+                <!-- Título y descripción -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h1 class="page-title">
+                            <i class="fas fa-store"></i> Nuestros Productos
+                        </h1>
+                        <p class="page-subtitle">
+                            Busca, filtra y selecciona lo que necesitas
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ======== BUSCADOR ======== -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="search-container">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-white border-end-0">
+                                    <i class="fas fa-search text-muted"></i>
+                                </span>
+                                <input type="text" 
+                                       id="searchInput" 
+                                       class="form-control border-start-0" 
+                                       placeholder="🔍 ¿Qué producto estás buscando?"
+                                       aria-label="Buscar productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== FILTROS POR CATEGORÍA ======== -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="categories-wrapper">
+                            <div class="categories-scroll">
+                                <button class="btn btn-category active" data-category="todos">
+                                    <i class="fas fa-th"></i> Todos
+                                </button>
+                                <button class="btn btn-category" data-category="abarrotes">
+                                    <i class="fas fa-box"></i> Abarrotes
+                                </button>
+                                <button class="btn btn-category" data-category="bebidas">
+                                    <i class="fas fa-wine-bottle"></i> Bebidas
+                                </button>
+                                <button class="btn btn-category" data-category="lacteos">
+                                    <i class="fas fa-cheese"></i> Lácteos
+                                </button>
+                                <button class="btn btn-category" data-category="snacks">
+                                    <i class="fas fa-cookie"></i> Snacks
+                                </button>
+                                <button class="btn btn-category" data-category="limpieza">
+                                    <i class="fas fa-spray-can"></i> Limpieza
+                                </button>
+                                <button class="btn btn-category" data-category="higiene">
+                                    <i class="fas fa-tooth"></i> Higiene
+                                </button>
+                                <button class="btn btn-category" data-category="otros">
+                                    <i class="fas fa-ellipsis-h"></i> Otros
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== CONTADOR DE RESULTADOS ======== -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div id="resultsCount" class="results-count">
+                            Mostrando <span id="productCount">0</span> productos
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== GRID DE PRODUCTOS ======== -->
+                <div class="row g-3 g-md-4" id="productsGrid">
+                    <!-- Los productos se cargarán dinámicamente desde JS -->
+                    <div class="col-12 text-center py-5" id="loadingProducts">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Cargando productos...</span>
+                        </div>
+                        <p class="mt-2 text-muted">Cargando productos...</p>
+                    </div>
+                </div>
+
+                <!-- ======== MENSAJE DE SIN PRODUCTOS ======== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div id="noProductsMessage" class="no-products-message" style="display: none;">
+                            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                            <h3>No encontramos productos</h3>
+                            <p>Intenta con otra búsqueda o categoría</p>
+                            <button class="btn btn-outline-primary" onclick="resetFilters()">
+                                <i class="fas fa-undo"></i> Ver todos los productos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>🏪 Nardia</h5>
+                    <p class="footer-text">
+                        Tu tienda de abarrotes de confianza. 
+                        <br>¡Siempre cerca de ti!
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="footer-contact">
+                        <a href="#" class="footer-whatsapp" id="whatsappFooterLink">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <p class="footer-hours">
+                            <i class="far fa-clock"></i> Lunes a Sábado: 8am - 8pm
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col text-center">
+                    <p class="footer-copy">
+                        &copy; 2026 Nardia - Todos los derechos reservados
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======== SCRIPTS ======== -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- App principal -->
+    <script src="js/app.js"></script>
+    
+    <!-- Lógica de productos -->
+    <script src="js/productos.js"></script>
+</body>
+</html>
