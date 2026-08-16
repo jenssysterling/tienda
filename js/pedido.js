@@ -375,7 +375,7 @@ function enviarPedidoWhatsApp() {
     }
     
     // Obtener número de WhatsApp
-    const numeroWhatsApp = window.WHATSAPP_NUMBER || '51999999999';
+    const numeroWhatsApp = window.WHATSAPP_NUMBER || '51953870664';
     
     // Crear URL de WhatsApp
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
