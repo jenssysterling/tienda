@@ -8,7 +8,7 @@
 // ========================================
 
 // Número de WhatsApp de la tienda (fácilmente modificable)
-const WHATSAPP_NUMBER = "51999999999"; // Cambia por el número real
+const WHATSAPP_NUMBER = "51953870664"; // Cambia por el número real
 
 // Claves para localStorage
 const STORAGE_KEYS = {
